@@ -26,12 +26,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Node.js
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
-        with:
-          node-version: 20
-          cache: npm
-
       - name: Read version and check whether it is new
         id: version
         shell: bash
@@ -59,6 +53,13 @@ jobs:
             echo "publish=true" >> "$GITHUB_OUTPUT"
             echo "Version $version is new and will be validated for publication."
           fi
+
+      - name: Set up Node.js
+        if: steps.version.outputs.publish == 'true'
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 20
+          cache: npm
 
       - name: Install locked dependencies
         if: steps.version.outputs.publish == 'true'
