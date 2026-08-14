@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'nonce-{{nonce}}'; img-src data:; script-src 'nonce-{{nonce}}'; connect-src 'none'" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style nonce="{{nonce}}">{{styles}}</style>
+  <title>AI Tokenizer</title>
+</head>
+<body>
+  <header class="app-header">
+    <img class="app-logo for-dark" src="{{logo}}" alt="AI Tokenizer" />
+    <img class="app-logo for-light" src="{{logoLight}}" alt="AI Tokenizer" />
+  </header>
+
+  <section class="card">
+    <label class="visually-hidden" for="content">Text to count</label>
+    <textarea id="content" rows="18"
+              placeholder="Paste text or drop a file"></textarea>
+
+    <p class="localstats">
+      <span id="charCount">0 characters</span>
+      <span id="wordCount">0 words</span>
+    </p>
+
+    <div class="row">
+      <button id="pickFile" class="secondary">Choose a file</button>
+      <button id="clear" class="secondary">Clear</button>
+      <span id="fileName" class="filename"></span>
+    </div>
+
+  </section>
+
+  <section class="card">
+    <div class="row">
+      <label for="provider">Provider</label>
+      <select id="provider"></select>
+      <label for="model">Model</label>
+      <select id="model"></select>
+      <input id="customModel" type="text" placeholder="Model ID" aria-label="Custom model ID" hidden />
+      <button id="count" class="primary">Count tokens</button>
+    </div>
+
+    <p id="keyStatus" class="keystatus" hidden>
+      <span id="keyStatusText"></span>
+      <button id="getKey" class="link">Get a key</button>
+      <button id="setKey" class="link">Paste a key</button>
+    </p>
+
+    <div id="result" class="result" role="status" aria-live="polite"></div>
+
+    <div id="tokenModeRow" class="row tokenmode" hidden role="group" aria-label="Token display mode">
+      <button id="modeText" class="secondary" aria-pressed="true">Text</button>
+      <button id="modeIds" class="secondary" aria-pressed="false">Token IDs</button>
+    </div>
+
+    <div id="tokenView" class="tokenview" hidden></div>
+    <div id="error" class="error" role="alert"></div>
+  </section>
+
+  <script nonce="{{nonce}}">{{script}}</script>
+</body>
+</html>
