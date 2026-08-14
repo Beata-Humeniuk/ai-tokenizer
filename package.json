@@ -1,0 +1,90 @@
+{
+  "name": "ai-tokenizer",
+  "displayName": "AI Tokenizer",
+  "description": "Count the tokens in a file or a piece of text for Claude, GPT and Gemini models.",
+  "version": "1.0.0",
+  "publisher": "beatahumeniuk",
+  "license": "MIT",
+  "author": {
+    "name": "Beata Humeniuk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Beata-Humeniuk/ai-tokenizer.git"
+  },
+  "homepage": "https://github.com/Beata-Humeniuk/ai-tokenizer#readme",
+  "bugs": {
+    "url": "https://github.com/Beata-Humeniuk/ai-tokenizer/issues"
+  },
+  "icon": "media/icon.png",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "tokens",
+    "tokenizer",
+    "token count",
+    "llm",
+    "claude",
+    "gpt",
+    "gemini",
+    "context window",
+    "markdown"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "commands": [
+      {
+        "command": "aiTokenizer.open",
+        "title": "Open Token Counter",
+        "category": "AI Tokenizer"
+      },
+      {
+        "command": "aiTokenizer.setApiKey",
+        "title": "Set API Key",
+        "category": "AI Tokenizer"
+      },
+      {
+        "command": "aiTokenizer.clearApiKeys",
+        "title": "Clear Stored API Keys",
+        "category": "AI Tokenizer"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "aiTokenizer.open",
+          "group": "navigation@99",
+          "when": "resourceExtname == .md"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "tsc -p tsconfig.test.json && node --test out-test/test/*.test.js",
+    "vscode:prepublish": "npm run compile -- --production",
+    "package": "vsce package"
+  },
+  "dependencies": {
+    "gpt-tokenizer": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.90.0",
+    "@vscode/vsce": "3.9.2",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.4.0"
+  }
+}
