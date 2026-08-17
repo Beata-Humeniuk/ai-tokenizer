@@ -2,7 +2,7 @@
   "name": "ai-tokenizer",
   "displayName": "AI Tokenizer",
   "description": "Count the tokens in a file or a piece of text for Claude, GPT and Gemini models.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "beatahumeniuk",
   "license": "MIT",
   "author": {

@@ -26,15 +26,10 @@ whole text goes to Anthropic or to Google over HTTPS, along with your key. The
 extension asks for confirmation the first time you count with each of them, and
 remembers the answer.
 
-Nothing else is sent anywhere. There is no telemetry, no analytics, no update
-check and no other network traffic. The panel itself is sealed off: its Content
-Security Policy is `default-src 'none'` with `connect-src 'none'`, so the page
-you see cannot make a request of its own — the two API calls happen in the
-extension, not in the panel.
-
-The text you load is not written to disk, to settings, to workspace state or to
-any log. It lives in the open panel and disappears with it; the **Clear** button
-empties it immediately.
+Nothing else is sent anywhere: no telemetry, no analytics, no update check. The
+text you load is never written to disk — it lives in the open panel and
+disappears with it, and the **Clear** button empties it immediately. See
+[SECURITY.md](SECURITY.md) for the full scope.
 
 ## API keys
 
@@ -122,20 +117,6 @@ Install "AI Tokenizer" from the Visual Studio Code Marketplace, or download a
   [GitHub Issues](https://github.com/Beata-Humeniuk/ai-tokenizer/issues)
 - Security issues: see [SECURITY.md](SECURITY.md) — please never include a real
   API key or confidential text in a report.
-
-## Development
-
-```bash
-npm install
-npm run compile     # bundle the extension and the panel script
-npm run watch       # rebuild on change
-npm run typecheck   # TypeScript with no output
-npm test            # run the test suite
-npm run package     # build the .vsix
-```
-
-To try the extension, open this folder in VS Code and press `F5`
-(Extension Development Host).
 
 ## License
 
